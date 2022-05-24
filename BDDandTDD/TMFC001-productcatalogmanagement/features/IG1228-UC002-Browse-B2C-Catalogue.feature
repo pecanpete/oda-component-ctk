@@ -1,14 +1,18 @@
-Feature: IG1228-UC002-Browse B2C Catalogue
-
-    Scenario: Load the product categories
-        Given An empty product catalog
-        Given A product catalog populated with 'category' data
+Feature: <IG1228-UC002> Browse-B2C-Catalog
+    
+    Scenario: Create the categories
+        Given An empty product catalog  
+        When a product manager creates 'category' data
             | name                      | description                                       |
             | Internet line of product  | Fiber and ADSL broadband products                 |
             | Mobile line of product    | Mobile phones and packages                        |
-            | IoT line of product       | IoT devices and solutions                         |
-        When we request a list of 'category' resources
-        Then we should see 'category' data
+            | IoT line of product       | IoT devices and solutions 
+        Then 'category' data is successfully created
+
+    Scenario: Read the product categories
+        Given A product catalog populated with 'category' data
+        When a list of 'category' resources is requested
+        Then 'category' data is returned
             | name                      | description                                       |
             | Internet line of product  | Fiber and ADSL broadband products                 |
             | Mobile line of product    | Mobile phones and packages                        |
